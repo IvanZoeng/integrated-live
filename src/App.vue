@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <the-top-bar></the-top-bar>
     <router-view/>
   </div>
 </template>
 
 <script>
+import TheTopBar from './page/TheTopBar';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'the-top-bar': TheTopBar
+  }
 }
 </script>
 
@@ -18,6 +23,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
