@@ -1,15 +1,15 @@
 <template>
   <el-container class="wrapper">
     <el-container class="live-img-wrapper">
-      <a :href="liveInfo.url" target="_blank">
-        <img :src="liveInfo.img" class="liveImg" :alt="liveInfo.owner">
-      </a>
-    </el-container>
-    <el-container class="live-info-wrapper">
-      <div class="liveOwner">{{liveInfo.owner}}</div>
-      <div class="liveName">{{liveInfo.name}}</div>
-      <div class="liveHot">人数: {{liveInfo.hot}}</div>
-    </el-container>
+        <a :href="liveInfo.url" target="_blank">
+          <img :src="liveInfo.img" class="liveImg" :alt="liveInfo.owner">
+        </a>
+      </el-container>
+      <el-container class="live-info-wrapper">
+        <div class="liveOwner">{{liveInfo.owner}}</div>
+        <div class="liveName">{{liveInfo.name}}</div>
+        <div class="liveHot">人数: {{liveInfo.hot}}</div>
+      </el-container>
   </el-container>
 </template>
 
@@ -28,13 +28,14 @@ export default {
 .wrapper {
   width: 200px;
   height: 240px;
+  text-align: left;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  text-align: left
 }
 
 .live-img-wrapper {
-  flex: 5
+  flex: 5;
 }
 .liveImg {
   height: 100%;
@@ -49,7 +50,7 @@ export default {
 .liveOwner {
   flex: 1;
   font-size: 18px;
-  font-weight: bold
+  font-weight: bold;
 }
 .liveName {
   flex: 2;

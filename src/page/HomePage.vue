@@ -1,21 +1,29 @@
 <template>
   <el-container>
-    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu>
-        <el-menu-item
-          v-for="(item,index) in categoryKey"
-          :key="index"
-          @click="getCategory(item)"
-        >{{categoryMap[item]}}</el-menu-item>
-        <el-submenu index="1">
-          <template slot="title">其他游戏</template>
-          <el-menu-item>1</el-menu-item>
-        </el-submenu>
-      </el-menu>
-    </el-aside>
-    <el-main>
-      <live :liveInfo="test_data"></live>
-    </el-main>
+    <el-container>
+      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+        <el-menu>
+          <el-menu-item
+            v-for="(item,index) in categoryKey"
+            :key="index"
+            @click="getCategory(item)"
+          >{{categoryMap[item]}}</el-menu-item>
+          <el-submenu index="1">
+            <template slot="title">其他游戏</template>
+            <el-menu-item>1</el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+    </el-container>
+    <el-container>
+      <el-main>
+        <el-row v-for="(i, index) in eachRow" :key="index" :gutter="gutter">
+          <el-col :span="span" v-for="n in eachRow[i]" :key="n">
+            <live :liveInfo="currLives[index*livesEachRow+(n-1)]"></live>
+          </el-col>
+        </el-row>
+      </el-main>
+    </el-container>
   </el-container>
 </template>
 
@@ -31,34 +39,44 @@ export default {
     return {
       categoryMap: {},
       currLives: [],
-      test_data: {
-        hot: 6622376,
-        img: "https://rpic.douyucdn.cn/asrpic/190506/288016_1751.png/dy1",
-        name: "MSI入围淘汰赛TLvsPVB",
-        owner: "英雄联盟赛事",
-        url: "http://www.douyu.com/288016",
-        website: "Douyu"
-      }
+      showingWidth: window.innerWidth - 200 - 40
     };
   },
   computed: {
     categoryKey() {
-      return Object.keys(this.categoryMap);
+      return Object.keys(this.categoryMap)
     },
-    test_datas() {
-      return Array(20).fill(test_data)
+    livesEachRow() {
+      return Math.floor((this.showingWidth - 50) / 200)
+    },
+    span() {
+      return (200 / this.showingWidth) * 24
+    },
+    gutter() {
+      return (this.showingWidth - 200 * this.livesEachRow) / this.livesEachRow
+    },
+    rows() {
+      return Math.ceil(this.currLives.length / this.livesEachRow)
+    },
+    eachRow() {
+      let rows = Array(this.rows).fill(this.livesEachRow)
+      rows[rows.length - 1] = this.currLives.length - (rows.length - 1) * this.livesEachRow
+      return rows
     }
   },
 
   methods: {
     async getCategory(category) {
-      this.currLives = await getCategory(category);
-      console.log(this.currLives);
+      this.currLives = await getCategory(category)
+      console.log(this.currLives)
     }
   },
 
   async mounted() {
     this.categoryMap = await getAllCategories();
+    window.addEventListener("resize", () => {
+      this.showingWidth = window.innerWidth - 200 - 40
+    });
   }
 };
 </script>
