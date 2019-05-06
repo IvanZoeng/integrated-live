@@ -1,15 +1,4 @@
 <template>
-  <!-- <div class='wrapper'>
-        <a :href="liveInfo.url" target="_blank">
-            <img :src='liveInfo.img' class='liveImg' :alt='liveInfo.owner'>
-        </a>
-        <div>
-            <div>{{liveInfo.owner}}</div>
-            <div>{{liveInfo.name}}</div>
-            <div>{{liveInfo.hot}}</div>
-            <div>{{liveInfo.website}}</div>
-        </div>
-  </div>-->
   <el-container class="wrapper">
     <el-container class="live-img-wrapper">
       <a :href="liveInfo.url" target="_blank">
