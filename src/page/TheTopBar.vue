@@ -24,6 +24,8 @@ export default {};
 
 <style scoped>
 .el-row {
-    text-align: left
+    text-align: left;
+    height: 60px;
+    width: 100%;
 }
 </style>

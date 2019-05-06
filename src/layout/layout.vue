@@ -1,19 +1,21 @@
 <template>
-  <el-container style="height: 500px; border: 1px solid #eee">
-      <el-header>
-          <the-top-bar></the-top-bar>
-      </el-header>
+  <el-container>
+    <el-header>
+      <the-top-bar></the-top-bar>
+    </el-header>
+    <el-container class="container">
       <router-view></router-view>
+    </el-container>
   </el-container>
 </template>
 
 
 <script>
-import TheTopBar from '../page/TheTopBar'
+import TheTopBar from "../page/TheTopBar";
 export default {
-    components: {
-        TheTopBar
-    }
+  components: {
+    TheTopBar
+  }
 };
 </script>
 
@@ -22,13 +24,14 @@ export default {
   background-color: #b3c0d1;
   color: #333;
   line-height: 60px;
+  padding: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
 }
 
-.el-aside {
-  color: #333;
-}
-
-.el-header {
-    padding: 0px;
+.container {
+  position: absolute;
+  top: 60px;
 }
 </style>
