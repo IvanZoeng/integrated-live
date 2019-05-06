@@ -1,28 +1,29 @@
 <template>
-    <div class='wrapper'>
-        <router-link class='btn_top' to='/'>
-            直播
-        </router-link>
-        <router-link class='btn_top' to='/history'>
-            浏览历史
-        </router-link>
-        <router-link class='btn_top' to='/collect'>
-            我的收藏
-        </router-link>
-    </div>
+  <el-row>
+    <el-col :span="1">
+      <router-link class="btn_top" to="/">
+        <el-button>直播</el-button>
+      </router-link>
+    </el-col>
+    <el-col :span="1">
+      <router-link class="btn_top" to="/history">
+        <el-button>浏览历史</el-button>
+      </router-link>
+    </el-col>
+    <el-col :span="1">
+      <router-link class="btn_top" to="/collect">
+        <el-button>收藏</el-button>
+      </router-link>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-export default {
-    
-}
+export default {};
 </script>
 
 <style scoped>
-.wrapper {
-    background-color: bisque;
-    height: 100px;
-    width: 100%;
-
+.el-row {
+    text-align: left
 }
 </style>

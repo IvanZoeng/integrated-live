@@ -1,85 +1,71 @@
 <template>
-    <div class='wrapper'>
-        <div class='main'>
-            <div class='website'>
-                直播平台tag
-            </div>
-            <div class='lives'>
-                <live v-for='(item, index) of currLives' :key="index" :liveInfo='item'></live>    
-            </div>
-        </div>
-        <div class='sidebar'>
-            <div v-for='key of categoryKey' :key='key' @click='getCategory(key)'>
-                {{categoryMap[key]}}
-            </div>
-        </div>
-    </div>
+  <el-container>
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <el-menu>
+        <el-menu-item
+          v-for="(item,index) in categoryKey"
+          :key="index"
+          @click="getCategory(item)"
+        >{{categoryMap[item]}}</el-menu-item>
+        <el-submenu index="1">
+          <template slot="title">其他游戏</template>
+          <el-menu-item>1</el-menu-item>
+        </el-submenu>
+      </el-menu>
+    </el-aside>
+    <el-main>
+      <live :liveInfo="test_data"></live>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-import {getAllCategories, getCategory} from '@/util/api'
-import Live from '../components/Live'
+import { getAllCategories, getCategory } from "@/util/api";
+import Live from "../components/Live";
 
 export default {
-
-    components: {
-        'live': Live
+  components: {
+    live: Live
+  },
+  data() {
+    return {
+      categoryMap: {},
+      currLives: [],
+      test_data: {
+        hot: 6622376,
+        img: "https://rpic.douyucdn.cn/asrpic/190506/288016_1751.png/dy1",
+        name: "MSI入围淘汰赛TLvsPVB",
+        owner: "英雄联盟赛事",
+        url: "http://www.douyu.com/288016",
+        website: "Douyu"
+      }
+    };
+  },
+  computed: {
+    categoryKey() {
+      return Object.keys(this.categoryMap);
     },
-    data() {
-        return {
-            categoryMap: {},
-            currLives: []
-        }
-    },
-    computed: {
-        categoryKey() {
-            return Object.keys(this.categoryMap);
-        }
-    },
-
-    methods: {
-        async getCategory(category){
-            this.currLives = await getCategory(category);
-            console.log(this.currLives)
-        }
-    },
-
-    async mounted() {
-        this.categoryMap = await getAllCategories();
+    test_datas() {
+      return Array(20).fill(test_data)
     }
+  },
 
-}
+  methods: {
+    async getCategory(category) {
+      this.currLives = await getCategory(category);
+      console.log(this.currLives);
+    }
+  },
+
+  async mounted() {
+    this.categoryMap = await getAllCategories();
+  }
+};
 </script>
 
 <style scoped>
-.wrapper {
-    display: flex;
-    height: 800px;
+.el-submenu,
+.el-menu-item {
+  text-align: left;
 }
-
-.main {
-    flex: 5;
-    order: 10;
-}
-
-.sidebar {
-    min-width: 220px;
-    flex: 1;
-    order: 0;
-    background-color: brown
-}
-
-.website {
-    height: 80px;
-    background-color: azure
-}
-
-.lives {
-    background-color: blueviolet;
-    height: 720px;
-    widows: 100%;
-    display: flex;
-    flex-flow: wrap;
-}
-
 </style>
