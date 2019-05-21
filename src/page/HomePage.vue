@@ -67,6 +67,7 @@ export default {
 
   methods: {
     async getCategory(category) {
+      this.currLives = []
       this.currLives = await getCategory(category)
       console.log(this.currLives)
     }

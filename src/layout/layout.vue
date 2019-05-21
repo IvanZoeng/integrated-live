@@ -4,7 +4,9 @@
       <the-top-bar></the-top-bar>
     </el-header>
     <el-container class="container">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </el-container>
   </el-container>
 </template>
