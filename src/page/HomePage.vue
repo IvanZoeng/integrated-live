@@ -17,11 +17,7 @@
     </el-container>
     <el-container>
       <el-main>
-        <el-row v-for="(i, index) in eachRow" :key="index" :gutter="gutter">
-          <el-col :span="span" v-for="n in eachRow[i]" :key="n">
-            <live :liveInfo="currLives[index*livesEachRow+(n-1)]"></live>
-          </el-col>
-        </el-row>
+        <Live :liveInfoArr='currLives'></Live>
       </el-main>
     </el-container>
   </el-container>
@@ -29,39 +25,21 @@
 
 <script>
 import { getAllCategories, getCategory } from "@/util/api";
-import Live from "../components/Live";
+import Live from '@/components/Live'
 
 export default {
   components: {
-    live: Live
+    "Live": Live
   },
   data() {
     return {
       categoryMap: {},
       currLives: [],
-      showingWidth: window.innerWidth - 200 - 40
     };
   },
   computed: {
     categoryKey() {
       return Object.keys(this.categoryMap)
-    },
-    livesEachRow() {
-      return Math.floor((this.showingWidth - 50) / 200)
-    },
-    span() {
-      return (200 / this.showingWidth) * 24
-    },
-    gutter() {
-      return (this.showingWidth - 200 * this.livesEachRow) / this.livesEachRow
-    },
-    rows() {
-      return Math.ceil(this.currLives.length / this.livesEachRow)
-    },
-    eachRow() {
-      let rows = Array(this.rows).fill(this.livesEachRow)
-      rows[rows.length - 1] = this.currLives.length - (rows.length - 1) * this.livesEachRow
-      return rows
     }
   },
 
@@ -75,9 +53,6 @@ export default {
 
   async mounted() {
     this.categoryMap = await getAllCategories();
-    window.addEventListener("resize", () => {
-      this.showingWidth = window.innerWidth - 200 - 40
-    });
   }
 };
 </script>
