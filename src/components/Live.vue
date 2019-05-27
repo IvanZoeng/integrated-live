@@ -20,11 +20,16 @@ export default {
     liveInfoArr: {
       type: Array,
       default: () => []
+    },
+    width: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
-      showingWidth: window.innerWidth - 40 - 200 - 20
+      showingWidth: this.width - 40 - 40,
+      deltaFromWindowWidth: window.innerWidth - this.width
     };
   },
   computed: {
@@ -48,7 +53,7 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", throttle(() => {
-      this.showingWidth = window.innerWidth - 40 - 200 - 20
+      this.showingWidth = window.innerWidth - this.deltaFromWindowWidth - 40 - 40
     }));
   },
 };

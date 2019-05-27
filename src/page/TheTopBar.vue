@@ -9,7 +9,7 @@
   >
     <el-menu-item index="1">直播</el-menu-item>
     <el-menu-item index="2">历史</el-menu-item>
-    <el-menu-item index="3">收藏</el-menu-item>
+    <!-- <el-menu-item index="3">收藏</el-menu-item> -->
   </el-menu>
 </template>
 
