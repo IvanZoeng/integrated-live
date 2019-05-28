@@ -76,3 +76,17 @@ export function removeCollection(coll) {
     }
     setCollection(collections)
 }
+
+// *********************************
+// category
+// *********************************
+export function saveCategory(category) {
+    if(!category) {
+        return
+    }
+    setItem('category', category)
+}
+
+export function loadCategory() {
+    return getItem('category') || 'hs'
+}

@@ -31,6 +31,7 @@
 
 <script>
 import { getAllCategories, getCategory } from "@/util/api";
+import { loadCategory, saveCategory } from '@/util/localStorage'
 import Live from "@/components/Live";
 
 export default {
@@ -59,6 +60,7 @@ export default {
 
   methods: {
     async getCategory(category) {
+      saveCategory(category)
       this.currLives = [];
       this.selectedLives = [];
       this.currLives = await getCategory(category);
@@ -81,6 +83,8 @@ export default {
 
   async mounted() {
     this.categoryMap = await getAllCategories();
+    let category = loadCategory() || 'hs'
+    this.getCategory(category)
   }
 };
 </script>

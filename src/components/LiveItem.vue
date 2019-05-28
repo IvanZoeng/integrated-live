@@ -9,7 +9,7 @@
       <div class="liveOwner">{{liveInfo.owner}}</div>
       <div class="liveName">{{liveInfo.name}}</div>
       <div class="liveHot">人数: {{liveInfo.hot}}</div>
-      <div>{{liveInfo.website}}</div>
+      <!-- <div>{{liveInfo.website}}</div> -->
     </el-container>
   </el-container>
 </template>
@@ -39,7 +39,7 @@ export default {
 <style scoped>
 .wrapper {
   width: 210px;
-  height: 320px;
+  height: 280px;
   text-align: left;
   margin-bottom: 30px;
   display: flex;
