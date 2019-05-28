@@ -37,12 +37,5 @@ let router = new Router({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   console.log('before', to, from, next)
-// });
-
-// router.afterEach((to, from, next) => {
-//   console.log('after', to, from, next)
-// });
 
 export default router

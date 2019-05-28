@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    :default-active="'1'"
+    :default-active="activeMenu"
     mode="horizontal"
     background-color="#545c64"
     text-color="#fff"
@@ -16,6 +16,15 @@
 
 <script>
 export default {
+  computed: {
+    activeMenu() {
+      return [
+        '',
+        'HomePage',
+        'HistoryPage'
+      ].indexOf(this.$route.name).toString()
+    }
+  },
   methods: {
     handleSelect(key, keyPath) {
       this.$router.push(['', 'live', 'history', 'collect'][key])

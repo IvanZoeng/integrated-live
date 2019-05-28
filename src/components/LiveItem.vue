@@ -44,7 +44,7 @@ export default {
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  border: 2px rgba(155,155,155,0.5) solid;
+  /* border: 2px rgba(155,155,155,0.5) solid; */
   border-radius: 5px;
   padding: 2px 5px 10px 5px;
   box-sizing: border-box;
