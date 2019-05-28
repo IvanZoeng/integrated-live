@@ -79,6 +79,10 @@ export default {
       }
     },
     filterWebsite(website) {
+      if(website === 'all') {
+        this.selectedLives = this.currLives
+        return
+      }
       this.selectedLives = this.currLives.filter(
         item => item.website === website
       );
