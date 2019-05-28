@@ -8,7 +8,7 @@
             :key="index"
             @click="getCategory(item)"
           >{{categoryMap[item]}}</el-menu-item>
-          <el-submenu index="1">
+          <el-submenu index="1" style='display:none'>
             <template slot="title">其他游戏</template>
             <el-menu-item>1</el-menu-item>
           </el-submenu>
