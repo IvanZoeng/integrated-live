@@ -6,6 +6,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
     @select="handleSelect"
+    class="wrapper"
   >
     <el-menu-item index="1">直播</el-menu-item>
     <el-menu-item index="2">历史</el-menu-item>
@@ -24,6 +25,9 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  padding: 0px
+}
 .el-row {
   text-align: left;
   height: 60px;
