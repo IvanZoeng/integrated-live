@@ -8,7 +8,7 @@
     <el-container class="live-info-wrapper">
       <div class="liveOwner">{{liveInfo.owner}}</div>
       <div class="liveName">{{liveInfo.name}}</div>
-      <div class="liveHot">人数: {{liveInfo.hot}}</div>
+      <div class="liveHot">人气: {{liveInfo.hot}}</div>
       <!-- <div>{{liveInfo.website}}</div> -->
     </el-container>
   </el-container>

@@ -16,14 +16,16 @@
       </el-aside>
     </el-container>
     <el-container class="main-wrapper">
-      <el-main>
+      <el-main class='main'>
         <el-container v-if='currLives.length' class='website-select-wrapper'>
           <el-button @click='select("Douyu")' :type="isPrimary('Douyu')">斗鱼</el-button>
           <el-button @click='select("Huya")' :type="isPrimary('Huya')">虎牙</el-button>
           <el-button @click='select("Wangyi")' :type="isPrimary('Wangyi')">网易</el-button>
           <el-button @click='select("Bilibili")' :type="isPrimary('Bilibili')">BiliBili</el-button>
         </el-container>
-        <Live :liveInfoArr="selectedLives" :width="liveWidth"></Live>
+        <el-container>
+          <Live :liveInfoArr="selectedLives" :width="liveWidth"></Live>
+        </el-container>
       </el-main>
     </el-container>
   </el-container>
@@ -95,13 +97,12 @@ export default {
   text-align: left;
 }
 .website-select-wrapper {
-  margin-bottom: 15px
+  margin-bottom: 15px;
 }
 
-/* .side-wrapper,
-.main-wrapper {
-  overflow-y: scroll;
-  height: calc(100% - 60px)
+.side-wrapper {
+  width: 200px;
+  max-width: 200px;
 }
-.side-wrapper::-webkit-scrollbar {display:none} */
+
 </style>
