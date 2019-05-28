@@ -18,10 +18,10 @@
     <el-container class="main-wrapper">
       <el-main>
         <el-container v-if='currLives.length' class='website-select-wrapper'>
-          <el-button @click='select("Douyu")'>斗鱼</el-button>
-          <el-button @click='select("Huya")'>虎牙</el-button>
-          <el-button @click='select("Wangyi")'>网易</el-button>
-          <el-button @click='select("Bilibili")'>BiliBili</el-button>
+          <el-button @click='select("Douyu")' :type="isPrimary('Douyu')">斗鱼</el-button>
+          <el-button @click='select("Huya")' :type="isPrimary('Huya')">虎牙</el-button>
+          <el-button @click='select("Wangyi")' :type="isPrimary('Wangyi')">网易</el-button>
+          <el-button @click='select("Bilibili")' :type="isPrimary('Bilibili')">BiliBili</el-button>
         </el-container>
         <Live :liveInfoArr="selectedLives" :width="liveWidth"></Live>
       </el-main>
@@ -49,6 +49,11 @@ export default {
   computed: {
     categoryKey() {
       return Object.keys(this.categoryMap);
+    },
+    isPrimary() {
+      return (website) => {
+        return website === this.currWebsite ? 'primary' : ''
+      }
     }
   },
 
@@ -88,6 +93,7 @@ export default {
 .website-select-wrapper {
   margin-bottom: 15px
 }
+
 /* .side-wrapper,
 .main-wrapper {
   overflow-y: scroll;
