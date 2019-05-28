@@ -59,6 +59,9 @@ export default {
   width: 100%;
   border-radius: 5px
 }
+.liveImg:hover {
+  cursor: pointer;
+}
 .live-info-wrapper {
   flex: 3;
   display: flex;
