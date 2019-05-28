@@ -13,7 +13,8 @@ import {
     DropdownMenu,
     Main,
     Col,
-    Row
+    Row,
+    Loading
 } from 'element-ui'
 import Vue from 'vue'
 
@@ -32,3 +33,4 @@ Vue.use(DropdownMenu)
 Vue.use(Main)
 Vue.use(Col)
 Vue.use(Row)
+Vue.use(Loading)

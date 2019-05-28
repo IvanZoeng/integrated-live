@@ -27,6 +27,11 @@
         </el-container>
       </el-main>
     </el-container>
+    <el-container
+      v-loading.fullscreen.lock='isLoading'
+      class='loading-wrapper'
+      element-loading-background="rgba(0, 0, 0, 0.5)">
+    </el-container>
   </el-container>
 </template>
 
@@ -46,7 +51,8 @@ export default {
       selectedLives: [],
       currWebsite: "all",
       liveWidth: window.innerWidth - 200,
-      currCategory: ''
+      currCategory: '',
+      isLoading: true
     };
   },
   computed: {
@@ -65,7 +71,9 @@ export default {
       saveCategory(category)
       this.currCategory = category
       this.selectedLives = [];
+      this.isLoading = true
       this.currLives = await getCategory(category);
+      this.isLoading = false;
       this.filterWebsite(this.currWebsite)
       // console.log(this.currLives)
     },
@@ -115,6 +123,13 @@ export default {
 .live-wrapper {
   display: flex;
   align-items: center;
+}
+
+.loading-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%), translateY(-50%)
 }
 
 </style>
