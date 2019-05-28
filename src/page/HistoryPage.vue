@@ -39,5 +39,7 @@ export default {
   padding: 20px 20px;
   text-align: center;
   width: 100%;
+  display: flex;
+  align-items: center
 }
 </style>

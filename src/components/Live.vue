@@ -60,13 +60,6 @@ export default {
 </script>
 
 <style>
-.row {
-  justify-content: center;
-  display: flex;
-}
 
-.col {
-  flex: 1
-}
 
 </style>

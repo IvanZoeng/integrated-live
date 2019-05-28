@@ -2,16 +2,15 @@
   <el-container>
     <el-container class="side-wrapper">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu>
+        <el-menu :default-active="currCategory">
           <el-menu-item
             v-for="(item,index) in categoryKey"
             :key="index"
             @click="getCategory(item)"
-          >{{categoryMap[item]}}</el-menu-item>
-          <el-submenu index="1" style='display:none'>
-            <template slot="title">其他游戏</template>
-            <el-menu-item>1</el-menu-item>
-          </el-submenu>
+            :index="item"
+          >
+            {{categoryMap[item]}}
+          </el-menu-item>
         </el-menu>
       </el-aside>
     </el-container>
@@ -23,7 +22,7 @@
           <el-button @click='select("Wangyi")' :type="isPrimary('Wangyi')">网易</el-button>
           <el-button @click='select("Bilibili")' :type="isPrimary('Bilibili')">BiliBili</el-button>
         </el-container>
-        <el-container>
+        <el-container class='live-wrapper'>
           <Live :liveInfoArr="selectedLives" :width="liveWidth"></Live>
         </el-container>
       </el-main>
@@ -46,7 +45,8 @@ export default {
       currLives: [],
       selectedLives: [],
       currWebsite: "all",
-      liveWidth: window.innerWidth - 200
+      liveWidth: window.innerWidth - 200,
+      currCategory: ''
     };
   },
   computed: {
@@ -57,12 +57,13 @@ export default {
       return (website) => {
         return website === this.currWebsite ? 'primary' : ''
       }
-    }
+    },
   },
 
   methods: {
     async getCategory(category) {
       saveCategory(category)
+      this.currCategory = category
       this.selectedLives = [];
       this.currLives = await getCategory(category);
       this.filterWebsite(this.currWebsite)
@@ -91,8 +92,8 @@ export default {
 
   async mounted() {
     this.categoryMap = await getAllCategories();
-    let category = loadCategory() || 'hs'
-    this.getCategory(category)
+    this.currCategory = loadCategory() || 'hs'
+    this.getCategory(this.currCategory)
   }
 };
 </script>
@@ -109,6 +110,11 @@ export default {
 .side-wrapper {
   width: 200px;
   max-width: 200px;
+}
+
+.live-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 </style>
