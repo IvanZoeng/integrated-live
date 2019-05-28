@@ -1,7 +1,7 @@
 <template>
   <el-container direction="vertical">
-    <el-row v-for="(i, index) in eachRow" :key="index" :gutter="gutter">
-      <el-col :span="span" v-for="n in eachRow[index]" :key="n">
+    <el-row v-for="(i, index) in eachRow" :key="index" :gutter="gutter" class='row'>
+      <el-col :span="span" v-for="n in eachRow[index]" :key="n" class='col'>
         <live :liveInfo="liveInfoArr[index*livesEachRow+(n-1)]"></live>
       </el-col>
     </el-row>
@@ -40,7 +40,7 @@ export default {
       return (200 / this.showingWidth) * 24
     },
     gutter() {
-      return (this.showingWidth - 200 * this.livesEachRow) / this.livesEachRow
+      return (this.showingWidth - 210 * this.livesEachRow) / this.livesEachRow
     },
     rows() {
       return Math.ceil(this.liveInfoArr.length / this.livesEachRow)
@@ -60,4 +60,13 @@ export default {
 </script>
 
 <style>
+.row {
+  justify-content: center;
+  display: flex;
+}
+
+.col {
+  flex: 1
+}
+
 </style>

@@ -38,12 +38,17 @@ export default {
 
 <style scoped>
 .wrapper {
-  width: 200px;
-  height: 240px;
+  width: 210px;
+  height: 320px;
   text-align: left;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  border: 2px rgba(155,155,155,0.5) solid;
+  border-radius: 5px;
+  padding: 2px 5px 10px 5px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px #888888;
 }
 
 .live-img-wrapper {
@@ -52,6 +57,7 @@ export default {
 .liveImg {
   height: 100%;
   width: 100%;
+  border-radius: 5px
 }
 .live-info-wrapper {
   flex: 3;
@@ -61,13 +67,15 @@ export default {
 
 .liveOwner {
   flex: 1;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 .liveName {
+  font-size: 14px;
   flex: 2;
 }
 .liveHot {
+  font-size: 14px;
   flex: 1;
   color: #0f6efd;
 }

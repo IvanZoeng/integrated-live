@@ -35,5 +35,7 @@ export default {
 .container {
   position: absolute;
   top: 60px;
+  width: 100%;
+  text-align: center;
 }
 </style>
