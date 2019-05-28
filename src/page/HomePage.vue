@@ -17,7 +17,7 @@
     </el-container>
     <el-container class="main-wrapper">
       <el-main class='main'>
-        <el-container v-if='currLives.length' class='website-select-wrapper'>
+        <el-container v-show='currLives.length' class='website-select-wrapper'>
           <el-button @click='select("Douyu")' :type="isPrimary('Douyu')">斗鱼</el-button>
           <el-button @click='select("Huya")' :type="isPrimary('Huya')">虎牙</el-button>
           <el-button @click='select("Wangyi")' :type="isPrimary('Wangyi')">网易</el-button>
@@ -63,10 +63,9 @@ export default {
   methods: {
     async getCategory(category) {
       saveCategory(category)
-      this.currLives = [];
       this.selectedLives = [];
       this.currLives = await getCategory(category);
-      this.selectedLives = this.currLives;
+      this.filterWebsite(this.currWebsite)
       // console.log(this.currLives)
     },
     select(website) {
@@ -76,10 +75,13 @@ export default {
         this.selectedLives = this.currLives;
       } else {
         this.currWebsite = website;
-        this.selectedLives = this.currLives.filter(
-          item => item.website === website
-        );
+        this.filterWebsite(website)
       }
+    },
+    filterWebsite(website) {
+      this.selectedLives = this.currLives.filter(
+        item => item.website === website
+      );
     }
   },
 
