@@ -32,8 +32,8 @@ export function addHistory(history) {
     }
     if(idx === -1) {
         hist.unshift(history)
-        if(hist.length > 10) {
-            hist = hist.slice(0, 10)
+        if(hist.length > 50) {
+            hist = hist.slice(0, 50)
         }
     } else {
         hist.splice(idx, 1)

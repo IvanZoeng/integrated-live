@@ -17,7 +17,13 @@
     </el-container>
     <el-container class="main-wrapper">
       <el-main>
-        <Live :liveInfoArr="currLives" :width="liveWidth"></Live>
+        <el-container v-if='currLives.length' class='website-select-wrapper'>
+          <el-button @click='select("Douyu")'>斗鱼</el-button>
+          <el-button @click='select("Huya")'>虎牙</el-button>
+          <el-button @click='select("Wangyi")'>网易</el-button>
+          <el-button @click='select("Bilibili")'>BiliBili</el-button>
+        </el-container>
+        <Live :liveInfoArr="selectedLives" :width="liveWidth"></Live>
       </el-main>
     </el-container>
   </el-container>
@@ -35,6 +41,8 @@ export default {
     return {
       categoryMap: {},
       currLives: [],
+      selectedLives: [],
+      currWebsite: "all",
       liveWidth: window.innerWidth - 200
     };
   },
@@ -47,8 +55,22 @@ export default {
   methods: {
     async getCategory(category) {
       this.currLives = [];
+      this.selectedLives = [];
       this.currLives = await getCategory(category);
+      this.selectedLives = this.currLives;
       // console.log(this.currLives)
+    },
+    select(website) {
+      this.selectedLives = []
+      if (this.currWebsite === website) {
+        this.currWebsite = "all";
+        this.selectedLives = this.currLives;
+      } else {
+        this.currWebsite = website;
+        this.selectedLives = this.currLives.filter(
+          item => item.website === website
+        );
+      }
     }
   },
 
@@ -62,6 +84,9 @@ export default {
 .el-submenu,
 .el-menu-item {
   text-align: left;
+}
+.website-select-wrapper {
+  margin-bottom: 15px
 }
 /* .side-wrapper,
 .main-wrapper {

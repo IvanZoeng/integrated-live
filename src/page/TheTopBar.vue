@@ -17,7 +17,7 @@
 export default {
   methods: {
     handleSelect(key, keyPath) {
-      this.$router.push(['', '/', 'history', 'collect'][key])
+      this.$router.push(['', 'live', 'history', 'collect'][key])
     }
   }
 };

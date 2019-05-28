@@ -9,7 +9,7 @@
       <div class="liveOwner">{{liveInfo.owner}}</div>
       <div class="liveName">{{liveInfo.name}}</div>
       <div class="liveHot">人数: {{liveInfo.hot}}</div>
-      <!-- <el-button @click='collect'>关注</el-button> -->
+      <div>{{liveInfo.website}}</div>
     </el-container>
   </el-container>
 </template>
